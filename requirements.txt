@@ -1,0 +1,11 @@
+# Runtime dependencies. See pyproject.toml for the authoritative list.
+# Install with:  pip install -r requirements.txt
+numpy>=1.24
+pandas>=2.0
+requests>=2.28
+pyyaml>=6.0
+matplotlib>=3.7
+seaborn>=0.13
+
+# Dev / tests
+pytest>=7.0

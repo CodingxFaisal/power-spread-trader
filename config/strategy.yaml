@@ -1,0 +1,35 @@
+# =============================================================================
+# Configuration for the cross-border day-ahead spread mean-reversion strategy.
+# No magic numbers in code -- data window, signal params, costs and the
+# out-of-sample split all live here.
+# =============================================================================
+
+data:
+  start: "2021-01-01"
+  end: "2025-01-01"
+  # Germany plus liquid, well-interconnected neighbours.
+  zones: [DE_LU, FR, NL, BE, AT, CH, DK1]
+
+strategy:
+  reference_zone: DE_LU     # spreads are (reference - other_zone)
+  include_outright: true    # also trade the DE_LU price level's mean reversion
+  lookback_days: 20         # rolling window for the z-score (mean + std)
+  entry_z: 1.5              # open when |z| exceeds this
+  exit_z: 0.5               # close when |z| falls back inside this
+  max_position: 1.0         # cap on |position| per instrument (MWh notional)
+
+costs:
+  # Charged on every unit of position change (turnover). Covers exchange fees,
+  # bid-ask half-spread and slippage. This is a *liquid-execution* baseline; the
+  # cost-sensitivity analysis (scripts/run_cost_sensitivity.py) sweeps it up to
+  # the break-even level, which is where the honest discussion of realizable
+  # edge lives -- see the README.
+  transaction_cost_eur_per_mwh: 0.30
+  slippage_eur_per_mwh: 0.20
+
+backtest:
+  # First fraction of the sample is in-sample (used to sanity-check the params
+  # and shown separately); the remainder is the out-of-sample test the headline
+  # metrics are reported on.
+  oos_split_frac: 0.50
+  trading_days_per_year: 365   # power clears every calendar day

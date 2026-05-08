@@ -1,0 +1,26 @@
+# Prices are downloaded on demand from SMARD and too large to version.
+# results/ charts ARE committed -- they are the deliverable shown in the README.
+data/raw/
+data/processed/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Environments
+.venv/
+venv/
+env/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
