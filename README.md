@@ -23,7 +23,7 @@ platform), 2021–2024. No API key.
 
 ## Headline result
 
-Ten instruments (the German price level plus six DE-vs-neighbour spreads) traded
+Seven instruments (the German price level plus six DE-vs-neighbour spreads) traded
 as a daily, equal-weight, mean-reversion portfolio. The sample is split 50/50
 into in-sample and out-of-sample, and all headline figures are out-of-sample and
 net of a 0.50 EUR/MWh round-trip cost:
@@ -145,7 +145,7 @@ cost[t]      = |position[t] - position[t-1]| * (fees + slippage)
 net_pnl[t]   = gross_pnl[t] - cost[t]
 ```
 
-**Portfolio.** Equal weight across the ten instruments. Diversification across
+**Portfolio.** Equal weight across the seven instruments. Diversification across
 imperfectly correlated spreads is what lifts the portfolio Sharpe above the
 roughly 2.9 to 4.2 of any single instrument.
 
